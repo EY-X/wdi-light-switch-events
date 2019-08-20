@@ -4,25 +4,23 @@ document.addEventListener('DOMContentLoaded', function(){
     const status = document.querySelector('.status')
     const buttonSwitch = document.querySelector('.switch')
     
+    // "Helper" / "Utility" Function
+    function myToggle(elm, oldClass, newClass) {
+        elm.classList.remove(oldClass)
+        elm.classList.add(newClass)
+    }
+
     buttonSwitch.addEventListener('click', function() {
         if (buttonSwitch.classList.contains("on")) {
             // Turning Off the Lights
-            buttonSwitch.classList.remove("on")
-            buttonSwitch.classList.add("off")
-            body.classList.remove('light')
-            body.classList.add('dark')
-
+            myToggle(buttonSwitch, "on", "off")
+            myToggle(body, "light", "dark")
             status.innerText = "BOOOOO!"
-
-
         } else {
             // Turning ON the Lights
-            buttonSwitch.classList.remove("off")
-            buttonSwitch.classList.add("on")
-            body.classList.remove('dark')
-            body.classList.add('light')
-
-            status.innerText = "I'm a vampire :("
+            myToggle(buttonSwitch, "off", "on")
+            myToggle(body, "dark", "light")
+            status.innerText = "I'm a zombie :("
 
 
         }
